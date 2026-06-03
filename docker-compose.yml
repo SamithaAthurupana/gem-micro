@@ -1,0 +1,31 @@
+services:
+  gem-db:
+    image: postgres:17-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_DB: gemdb
+      POSTGRES_USER: gem
+      POSTGRES_PASSWORD: gem123
+    volumes:
+      - gem-data:/var/lib/postgresql/data
+  dealer-db:
+    image: postgres:17-alpine
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_DB: dealerdb
+      POSTGRES_USER: dealer
+      POSTGRES_PASSWORD: dealer123
+    volumes:
+      - gem-data:/var/lib/postgresql/data
+  trade-db:
+    image: postgres:17-alpine
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_DB: tradedb
+      POSTGRES_USER: trade
+      POSTGRES_PASSWORD: trade123
+    volumes:
+      - gem-data:/var/lib/postgresql/data

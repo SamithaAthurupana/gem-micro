@@ -1,0 +1,7 @@
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
+COPY src ./src
+COPY pom.xml .
+RUN apt-get update && apt-get install -y maven && mvn clean package -DskipTests
+EXPOSE 8081
+ENTRYPOINT ["java", "-jar", "target/gem-service-0.0.1-SNAPSHOT.jar"]
